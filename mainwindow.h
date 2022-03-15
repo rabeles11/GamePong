@@ -18,40 +18,41 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);    ///< Null pointer to MW that let us change the objects from another window.
     ~MainWindow();
-    static MainWindow * getMainWinPtr();
+    static MainWindow * getMainWinPtr();      ///< Static pointer to function GetMainWinPtr that allows us control object from another window.
 
-    Paddle *p;
+    Paddle *p;                                ///< Pointer to paddle class
 
-    void IncreaseScore();
+    void IncreaseScore();                     ///< Header of Increase Score
 
-    void DecreaseScore();
-    QTimer *timer;
+    void DecreaseScore();                     ///< Header of Decrease score
+    QTimer *timer;                            ///< Pointer to our timer
+    QList<SpritePtr> sprites;                 ///< QList that store our sprites
 
 signals:
-    void draw(QPainter &painter);
+    void draw(QPainter &painter);             ///< Signal draw that draws our object on window like paddle and sprite
 
 private slots:
-    void on_actionQuitGame_triggered();
+    void on_actionQuitGame_triggered();       ///< Slot to button QuitGame
 
-    void on_actionStartGame_triggered();
+    void on_actionStartGame_triggered();      ///< Slot to button StartGame
 
-    void myfunction();
+    void myfunction();                        ///< Slot for the timer to periodic generate sprites
 
-    void keyPressEvent(QKeyEvent * event);
+    void keyPressEvent(QKeyEvent * event);    ///< Slot to register our keypress
 
 private:
-    QList<SpritePtr> sprites;
+    //QList<SpritePtr> sprites;
     Ui::MainWindow *ui;
     //QTimer *timer;
     static MainWindow * pMainWindow;
-    int score = 0;
-    int timing = 5000;
+    int score = 0;                           ///< Score counter
+    int timing = 5000;                       ///< Timer speed
 
 
 
 protected:
-    virtual void paintEvent(QPaintEvent *);
+    virtual void paintEvent(QPaintEvent *);          ///< Override function that allow us to draw custom objects
 };
 #endif // MAINWINDOW_H

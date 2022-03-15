@@ -9,12 +9,23 @@ Paddle::Paddle(QWidget *p)
     QRect rct = parent->rect();
 
 }
-
+/**
+ * This is function draw our Paddle
+ *
+ *
+ * @param there is no parameters
+ */
 void Paddle::draw(QPainter &painter)
 {
     painter.drawRect(x, y, width, height);
 }
 
+/**
+ * This is function will move with our paddle to the left and redraw it on window
+ *
+ *
+ * @param there is no parameters
+ */
 
 void Paddle::RedrawLeft()
 {
@@ -26,6 +37,13 @@ void Paddle::RedrawLeft()
     }
     parent->update();
 }
+
+/**
+ * This is function will move with our paddle to the right and redraw it on window
+ *
+ *
+ * @param there is no parameters
+ */
 
 void Paddle::RedrawRight()
 {
